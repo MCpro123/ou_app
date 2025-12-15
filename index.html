@@ -5865,49 +5865,49 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Initialize music - Auto play without controls
-        function initMusic() {
-            console.log('Initializing background music...');
+        // function initMusic() {
+        //     console.log('Initializing background music...');
             
-            // Load saved music from localStorage
-            const savedMusic = localStorage.getItem('customMusic');
-            if (savedMusic) {
-                setCustomMusic(savedMusic);
-            }
+        //     // Load saved music from localStorage
+        //     const savedMusic = localStorage.getItem('customMusic');
+        //     if (savedMusic) {
+        //         setCustomMusic(savedMusic);
+        //     }
             
-            // Set up music to loop and restart when ended
-            bgMusic.addEventListener('ended', function() {
-                console.log('Music ended, restarting...');
-                this.currentTime = 0;
-                this.play().catch(e => console.log('Could not restart music automatically: ', e));
-            });
+        //     // Set up music to loop and restart when ended
+        //     bgMusic.addEventListener('ended', function() {
+        //         console.log('Music ended, restarting...');
+        //         this.currentTime = 0;
+        //         this.play().catch(e => console.log('Could not restart music automatically: ', e));
+        //     });
             
-            bgMusic.addEventListener('canplaythrough', function() {
-                console.log('Music can play through, attempting to play...');
-                if (!musicStarted) {
-                    playMusic();
-                }
-            });
+        //     bgMusic.addEventListener('canplaythrough', function() {
+        //         console.log('Music can play through, attempting to play...');
+        //         if (!musicStarted) {
+        //             playMusic();
+        //         }
+        //     });
             
-            bgMusic.addEventListener('error', function(e) {
-                console.error('Music loading error: ', e);
-                console.log('Error details: ', bgMusic.error);
-            });
+        //     bgMusic.addEventListener('error', function(e) {
+        //         console.error('Music loading error: ', e);
+        //         console.log('Error details: ', bgMusic.error);
+        //     });
             
-            // Try to play music after a short delay
-            setTimeout(() => {
-                if (!musicStarted) {
-                    playMusic();
-                }
-            }, 1000);
+        //     // Try to play music after a short delay
+        //     setTimeout(() => {
+        //         if (!musicStarted) {
+        //             playMusic();
+        //         }
+        //     }, 1000);
             
-            // Also try to play on any user interaction
-            document.addEventListener('click', function tryPlayOnInteraction() {
-                if (!musicStarted) {
-                    playMusic();
-                }
-                document.removeEventListener('click', tryPlayOnInteraction);
-            });
-        }
+        //     // Also try to play on any user interaction
+        //     document.addEventListener('click', function tryPlayOnInteraction() {
+        //         if (!musicStarted) {
+        //             playMusic();
+        //         }
+        //         document.removeEventListener('click', tryPlayOnInteraction);
+        //     });
+        // }
 
         // function playMusic() {
         //     if (musicStarted) return;
