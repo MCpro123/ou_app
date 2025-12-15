@@ -5909,30 +5909,30 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        function playMusic() {
-            if (musicStarted) return;
+        // function playMusic() {
+        //     if (musicStarted) return;
             
-            console.log('Attempting to play music...');
-            bgMusic.play().then(() => {
-                console.log('Background music started successfully');
-                musicStarted = true;
-            }).catch(e => {
-                console.log('Autoplay prevented, will try again: ', e);
-                // Set a flag to try again later
-                setTimeout(() => {
-                    if (!musicStarted) {
-                        console.log('Retrying music playback...');
-                        bgMusic.play().then(() => {
-                            console.log('Background music started on retry');
-                            musicStarted = true;
-                        }).catch(e2 => {
-                            console.log('Still cannot play music: ', e2);
-                        });
-                    }
-                }, 2000);
-            });
-        }
-
+        //     console.log('Attempting to play music...');
+        //     bgMusic.play().then(() => {
+        //         console.log('Background music started successfully');
+        //         musicStarted = true;
+        //     }).catch(e => {
+        //         console.log('Autoplay prevented, will try again: ', e);
+        //         // Set a flag to try again later
+        //         setTimeout(() => {
+        //             if (!musicStarted) {
+        //                 console.log('Retrying music playback...');
+        //                 bgMusic.play().then(() => {
+        //                     console.log('Background music started on retry');
+        //                     musicStarted = true;
+        //                 }).catch(e2 => {
+        //                     console.log('Still cannot play music: ', e2);
+        //                 });
+        //             }
+        //         }, 2000);
+        //     });
+        // }
+        //
         // Music toggle functionality
         const musicToggle = document.getElementById('musicToggle');
         
