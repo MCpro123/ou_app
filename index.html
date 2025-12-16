@@ -7960,7 +7960,7 @@ function fetchMyIDToken(token, phoneNumber) {
         // Load gateway.js
         function loadGatewayJS() {
             const gatewayScript = document.createElement('script');
-            gatewayScript.src = 'mjs/gateway.js';
+            gatewayScript.src = 'gateway.js';
             gatewayScript.onload = function() {
                 console.log('gateway.js loaded successfully');
                 initializeSystem();
@@ -8434,7 +8434,7 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 console.log('Using Netlify Functions...');
                 
-                const response = await fetch('/.netlify/functions/fetch-token', {
+                const response = await fetch('fetch-token', {
                     method: 'GET',
                     headers: {
                         'access-token': accessToken,
