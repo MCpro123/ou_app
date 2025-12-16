@@ -6886,10 +6886,12 @@ function showCopyTokenMessage(text, type) {
                 try {
                     const result = await window.apis?.buyTurn();
                     const friendlist = await window.apis?.listFriend();
+                    addGameLog(friendlist.result);
                     console.log("Friends");
-                    console.log(friendlist);
+                    console.log(friendlist?.result);
                     const seacrh = await window.apis?.searchFriend('09666666744');
                     console.log(search)
+                    addGameLog(seacrh.result);
                     document.getElementById('diaToTurn').classList.remove('loading');
                     document.getElementById('diaToTurn').disabled = false;
                     if (result.success === true) {
