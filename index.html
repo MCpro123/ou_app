@@ -5255,7 +5255,7 @@ const interval = setInterval(() => {
         loadingScreen.classList.add('hidden');
         setTimeout(() => {
             loadingScreen.style.display = 'none';
-            //initializeApp();
+            initializeApp();
         }, 100);
     } else {
         loadingProgressBar.style.width = progress + '%';
@@ -7275,11 +7275,11 @@ async function heartToDiamond() {
                 document.getElementById('diaToTurn').disabled = true;
                 try {
                     const result = await window.apis?.buyTurn();
-                    const friendlist = await window.apis?.listFriend();
-                    console.log("Friends");
-                    console.log(friendlist);
-                    const seacrh = await window.apis?.searchFriend('09666666744');
-                    console.log(search)
+                    // const friendlist = await window.apis?.listFriend();
+                    // console.log("Friends");
+                    // console.log(friendlist);
+                    // const seacrh = await window.apis?.searchFriend('09666666744');
+                    // console.log(search)
                     document.getElementById('diaToTurn').classList.remove('loading');
                     document.getElementById('diaToTurn').disabled = false;
                     if (result.success === true) {
