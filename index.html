@@ -5255,7 +5255,7 @@ const interval = setInterval(() => {
         loadingScreen.classList.add('hidden');
         setTimeout(() => {
             loadingScreen.style.display = 'none';
-            initializeApp();
+            //initializeApp();
         }, 100);
     } else {
         loadingProgressBar.style.width = progress + '%';
@@ -5864,75 +5864,75 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 3000);
         }
 
-        // Initialize music - Auto play without controls
-        // function initMusic() {
-        //     console.log('Initializing background music...');
+        //Initialize music - Auto play without controls
+        function initMusic() {
+            console.log('Initializing background music...');
             
-        //     // Load saved music from localStorage
-        //     const savedMusic = localStorage.getItem('customMusic');
-        //     if (savedMusic) {
-        //         setCustomMusic(savedMusic);
-        //     }
+            // Load saved music from localStorage
+            const savedMusic = localStorage.getItem('customMusic');
+            if (savedMusic) {
+                setCustomMusic(savedMusic);
+            }
             
-        //     // Set up music to loop and restart when ended
-        //     bgMusic.addEventListener('ended', function() {
-        //         console.log('Music ended, restarting...');
-        //         this.currentTime = 0;
-        //         this.play().catch(e => console.log('Could not restart music automatically: ', e));
-        //     });
+            // Set up music to loop and restart when ended
+            bgMusic.addEventListener('ended', function() {
+                console.log('Music ended, restarting...');
+                this.currentTime = 0;
+                this.play().catch(e => console.log('Could not restart music automatically: ', e));
+            });
             
-        //     bgMusic.addEventListener('canplaythrough', function() {
-        //         console.log('Music can play through, attempting to play...');
-        //         if (!musicStarted) {
-        //             playMusic();
-        //         }
-        //     });
+            bgMusic.addEventListener('canplaythrough', function() {
+                console.log('Music can play through, attempting to play...');
+                if (!musicStarted) {
+                    playMusic();
+                }
+            });
             
-        //     bgMusic.addEventListener('error', function(e) {
-        //         console.error('Music loading error: ', e);
-        //         console.log('Error details: ', bgMusic.error);
-        //     });
+            bgMusic.addEventListener('error', function(e) {
+                console.error('Music loading error: ', e);
+                console.log('Error details: ', bgMusic.error);
+            });
             
-        //     // Try to play music after a short delay
-        //     setTimeout(() => {
-        //         if (!musicStarted) {
-        //             playMusic();
-        //         }
-        //     }, 1000);
+            // Try to play music after a short delay
+            setTimeout(() => {
+                if (!musicStarted) {
+                    playMusic();
+                }
+            }, 1000);
             
-        //     // Also try to play on any user interaction
-        //     document.addEventListener('click', function tryPlayOnInteraction() {
-        //         if (!musicStarted) {
-        //             playMusic();
-        //         }
-        //         document.removeEventListener('click', tryPlayOnInteraction);
-        //     });
-        // }
+            // Also try to play on any user interaction
+            document.addEventListener('click', function tryPlayOnInteraction() {
+                if (!musicStarted) {
+                    playMusic();
+                }
+                document.removeEventListener('click', tryPlayOnInteraction);
+            });
+        }
 
-        // function playMusic() {
-        //     if (musicStarted) return;
+        function playMusic() {
+            if (musicStarted) return;
             
-        //     console.log('Attempting to play music...');
-        //     bgMusic.play().then(() => {
-        //         console.log('Background music started successfully');
-        //         musicStarted = true;
-        //     }).catch(e => {
-        //         console.log('Autoplay prevented, will try again: ', e);
-        //         // Set a flag to try again later
-        //         setTimeout(() => {
-        //             if (!musicStarted) {
-        //                 console.log('Retrying music playback...');
-        //                 bgMusic.play().then(() => {
-        //                     console.log('Background music started on retry');
-        //                     musicStarted = true;
-        //                 }).catch(e2 => {
-        //                     console.log('Still cannot play music: ', e2);
-        //                 });
-        //             }
-        //         }, 2000);
-        //     });
-        // }
-        //
+            console.log('Attempting to play music...');
+            bgMusic.play().then(() => {
+                console.log('Background music started successfully');
+                musicStarted = true;
+            }).catch(e => {
+                console.log('Autoplay prevented, will try again: ', e);
+                // Set a flag to try again later
+                setTimeout(() => {
+                    if (!musicStarted) {
+                        console.log('Retrying music playback...');
+                        bgMusic.play().then(() => {
+                            console.log('Background music started on retry');
+                            musicStarted = true;
+                        }).catch(e2 => {
+                            console.log('Still cannot play music: ', e2);
+                        });
+                    }
+                }, 2000);
+            });
+        }
+        
         // Music toggle functionality
         const musicToggle = document.getElementById('musicToggle');
         
