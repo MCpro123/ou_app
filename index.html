@@ -3069,8 +3069,8 @@
                 <div id="message" class="glass-message"></div>
                 
                 <div class="glass-info">
-                    <p><strong>Welcome to MY APP Bot</strong></p>
-                    <p>MY APP မှ hack ပေးထားသည်</p>
+                    <p><strong>MYAPP</strong></p>
+                    <p>MYAPP မှ hack ပေးထားသည်</p>
                 </div>
             </div>
         </div>
@@ -5864,7 +5864,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 3000);
         }
 
-        //Initialize music - Auto play without controls
+        // Initialize music - Auto play without controls
         function initMusic() {
             console.log('Initializing background music...');
             
@@ -5932,7 +5932,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 2000);
             });
         }
-        
+
         // Music toggle functionality
         const musicToggle = document.getElementById('musicToggle');
         
@@ -6846,428 +6846,38 @@ function showCopyTokenMessage(text, type) {
             }
         }
 
-        // async function heartToDiamond() {
-        //     if (!gameState.isAutoRunning) {
-        //         document.getElementById('heartToDia').classList.add('loading');
-        //         document.getElementById('heartToDia').disabled = true;
+        async function heartToDiamond() {
+            if (!gameState.isAutoRunning) {
+                document.getElementById('heartToDia').classList.add('loading');
+                document.getElementById('heartToDia').disabled = true;
                 
-        //         try {
-        //             const result = await window?.apis?.startQuestMode('GOLDEN_HEART');
-                    
-        //             console.log(result);
-        //             if (result?.result) {
-        //                 const sessionInfo = result.result;
-        //                 const data = sessionInfo.t1 + "_@@_" + (sessionInfo.gameId || sessionInfo.sessionId) + "_@@_" + 5 + "_@@_" + sessionInfo.msisdn;
-        //                 const encryptedData = await encryptRSA(data, sessionInfo.t2);
+                try {
+                    const result = await window?.apis?.startQuestMode('GOLDEN_HEART');
+                    console.log(result);
+                    if (result?.result) {
+                        const sessionInfo = result.result;
+                        const data = sessionInfo.t1 + "_@@_" + (sessionInfo.gameId || sessionInfo.sessionId) + "_@@_" + 5 + "_@@_" + sessionInfo.msisdn;
+                        const encryptedData = await encryptRSA(data, sessionInfo.t2);
 
-        //                 const _result = await window?.apis?.endGameQuestMode(encryptedData, 5, 100);
+                        const _result = await window?.apis?.endGameQuestMode(encryptedData, 5, 100);
                         
-        //                 if (_result.message) {
-        //                     addGameLog('✅ Heart converted to 1500 diamonds!', 'success');
-        //                     window.getPlayerInfo();
-        //                 }
-        //             } else if (result.message === 'E10400' || result.message === 'Not enough balance to purchase') {
-        //                 addGameLog('❌ You don\'t have enough money', 'error');
-        //             }
-                    
-        //         } catch (error) {
-        //             console.error('Error in heartToDiamond:', error);
-        //             addGameLog('❌ An error occurred', 'error');
-        //         } finally {
-        //             document.getElementById('heartToDia').classList.remove('loading');
-        //             document.getElementById('heartToDia').disabled = false;
-        //         }
-        //     }
-        // }
-
-        // async function heartToDiamond() {
-        //     // API availability check
-        //     if (!window.apis?.startQuestMode || !window.apis?.endGameQuestMode) {
-        //         addGameLog('System is not ready or Quest Mode APIs are unavailable.', 'error');
-        //         return;
-        //     }
-
-        //     // Prevent auto-running interference
-        //     if (gameState.isAutoRunning) {
-        //         addGameLog('Cannot convert hearts while auto-play is active.', 'warning');
-        //         return;
-        //     }
-
-        //     const convertBtn = document.getElementById('heartToDia');
-        //     if (!convertBtn) {
-        //         addGameLog('Conversion button not found.', 'error');
-        //         return;
-        //     }
-
-        //     // Set loading state
-        //     convertBtn.classList.add('loading');
-        //     convertBtn.disabled = true;
-
-        //     try {
-        //         addGameLog('Starting Heart to Diamond conversion...', 'info');
-                
-        //         // Start quest mode for golden heart conversion
-        //         const startResult = await window.apis.startQuestMode('GOLDEN_HEART');
-                
-        //         // Check for specific error conditions
-        //         if (startResult?.message === 'E10400' || startResult?.message === 'Not enough balance to purchase') {
-        //             addGameLog('❌ You don\'t have enough hearts to convert', 'error');
-        //             return;
-        //         }
-                
-        //         // Validate successful start
-        //         if (!startResult?.result) {
-        //             throw new Error(startResult?.message || "Failed to start heart conversion quest");
-        //         }
-                
-        //         addGameLog('Heart conversion quest started successfully', 'success');
-        //         const sessionInfo = startResult.result;
-
-        //         // Validate required session data
-        //         if (!sessionInfo?.t1 || !sessionInfo?.t2 || !sessionInfo?.msisdn) {
-        //             throw new Error("Invalid session data received from server");
-        //         }
-
-        //         // Determine session identifier
-        //         const sessionId = sessionInfo.gameId || sessionInfo.sessionId;
-        //         if (!sessionId) {
-        //             throw new Error("No valid session identifier found");
-        //         }
-
-        //         // Prepare payload - format: t1_@@_sessionId_@@_amount_@@_msisdn
-        //         const payload = `${sessionInfo.t1}_@@_${sessionId}_@@_5_@@_${sessionInfo.msisdn}`;
-                
-        //         addGameLog('Preparing encrypted payload...', 'info');
-        //         const encryptedData = await encryptRSA(payload, sessionInfo.t2);
-                
-        //         if (!encryptedData) {
-        //             throw new Error("Failed to encrypt transaction data");
-        //         }
-
-        //         // Finalize conversion - parameters: encryptedData, amount, score
-        //         addGameLog('Finalizing conversion...', 'info');
-        //         const finalResult = await window.apis.endGameQuestMode(encryptedData, 5, 100);
-
-        //         // Check for successful conversion
-        //         if (finalResult?.message || finalResult?.success) {
-        //             addGameLog('✅ Heart converted to 1500 diamonds!', 'success');
-                    
-        //             // Refresh player info
-        //             if (window.getPlayerInfo) {
-        //                 try {
-        //                     await window.getPlayerInfo();
-        //                     addGameLog('Player information updated successfully', 'info');
-        //                 } catch (refreshError) {
-        //                     console.warn('Failed to refresh player info:', refreshError);
-        //                     addGameLog('Note: Player info refresh may be delayed', 'warning');
-        //                 }
-        //             }
-        //         } else {
-        //             throw new Error(finalResult?.message || "Failed to complete heart conversion");
-        //         }
-
-        //     } catch (error) {
-        //         console.error('Heart to Diamond conversion error:', error);
-                
-        //         // User-friendly error messages
-        //         if (error.message.includes('network') || error.message.includes('Network')) {
-        //             addGameLog('❌ Network error. Please check your connection and try again.', 'error');
-        //         } else if (error.message.includes('timeout') || error.message.includes('Timeout')) {
-        //             addGameLog('❌ Request timed out. Please try again.', 'error');
-        //         } else {
-        //             addGameLog(`❌ Conversion failed: ${error.message}`, 'error');
-        //         }
-        //     } finally {
-        //         // Reset button state
-        //         convertBtn.classList.remove('loading');
-        //         convertBtn.disabled = false;
-        //     }
-        // }
-
-        // ========== RETRY FINALIZATION FUNCTION ==========
-async function retryFinalizeConversion(sessionData) {
-    const MAX_RETRIES = 3; // Very high limit for continuous retry
-    const BASE_DELAY = 2000; // Start with 2 seconds
-    const MAX_DELAY = 30000; // Max 30 seconds delay
-    
-    let retryCount = 0;
-    let delay = BASE_DELAY;
-    
-    while (true) {
-        try {
-            addGameLog(`Finalizing conversion (Attempt ${retryCount + 1})...`, 'info');
-            
-            // Create a timeout promise to prevent hanging forever
-            const timeoutPromise = new Promise((_, reject) => {
-                setTimeout(() => reject(new Error('Request timeout after 50s')), 50000);
-            });
-            
-            // Call the API with timeout protection
-            const apiPromise = window.apis.endGameQuestMode(
-                sessionData.encryptedData, 
-                5, 
-                100
-            );
-            
-            // Race between API call and timeout
-            const finalResult = await Promise.race([apiPromise, timeoutPromise]);
-            
-            console.log('endGameQuestMode response:', finalResult);
-
-            // Check for successful conversion
-            if (finalResult?.success === true || finalResult?.message?.includes?.('Success')) {
-                addGameLog('✅ Heart converted to 1500 diamonds!', 'success');
-                
-                // Refresh player info
-                if (window.getPlayerInfo) {
-                    try {
-                        await window.getPlayerInfo();
-                        addGameLog('Player information updated successfully', 'info');
-                    } catch (refreshError) {
-                        console.warn('Failed to refresh player info:', refreshError);
-                        addGameLog('Note: Player info refresh may be delayed', 'warning');
+                        if (_result.message) {
+                            addGameLog('✅ Heart converted to 1500 diamonds!', 'success');
+                            window.getPlayerInfo();
+                        }
+                    } else if (result.message === 'E10400' || result.message === 'Not enough balance to purchase') {
+                        addGameLog('❌ You don\'t have enough money', 'error');
                     }
+                    
+                } catch (error) {
+                    console.error('Error in heartToDiamond:', error);
+                    addGameLog('❌ An error occurred', 'error');
+                } finally {
+                    document.getElementById('heartToDia').classList.remove('loading');
+                    document.getElementById('heartToDia').disabled = false;
                 }
-                return true; // Success! Exit the loop
             }
-            
-            // Check for timeout error in response
-            if (finalResult?.errorCode === 408 || finalResult?.message?.includes?.('E10408')) {
-                addGameLog('⏳ Server timeout, retrying...', 'warning');
-                throw new Error('Server timeout error');
-            }
-            
-            // Check for other errors in response
-            if (finalResult?.errorCode || finalResult?.message) {
-                const errorMsg = finalResult.message || `Error ${finalResult.errorCode}`;
-                addGameLog(`Server error: ${errorMsg}`, 'error');
-                
-                // If it's a non-retryable error, throw it
-                if (finalResult.errorCode === 400 || finalResult.errorCode === 403) {
-                    throw new Error(`Non-retryable error: ${errorMsg}`);
-                }
-                
-                // Otherwise, treat as retryable
-                throw new Error(`Retryable error: ${errorMsg}`);
-            }
-            
-            // If we get here, response is unexpected but not an error
-            addGameLog('Unexpected response, retrying...', 'warning');
-            throw new Error('Unexpected response format');
-            
-        } catch (error) {
-            retryCount++;
-            console.error(`Finalization attempt ${retryCount} failed:`, error.message || error);
-            
-            // Safety check - don't retry forever if something is really wrong
-            if (retryCount > MAX_RETRIES) {
-                addGameLog('❌ Maximum retry attempts reached', 'error');
-                addGameLog('💡 Please contact support with session ID: ' + sessionData.sessionId, 'info');
-                throw new Error('Maximum retry attempts reached');
-            }
-            
-            // Check if error is retryable
-            const errorMessage = error.message || '';
-            const shouldRetry = 
-                errorMessage.includes('timeout') ||
-                errorMessage.includes('E10408') ||
-                errorMessage.includes('408') ||
-                errorMessage.includes('network') ||
-                errorMessage.includes('Network') ||
-                errorMessage.includes('Unexpected') ||
-                errorMessage.includes('Retryable') ||
-                errorMessage.includes('undefined') || // Catches the TypeError
-                errorMessage.includes('TypeError') ||
-                typeof error === 'undefined';
-            
-            if (!shouldRetry) {
-                // Non-retryable error
-                addGameLog(`❌ Non-retryable error: ${errorMessage}`, 'error');
-                throw error;
-            }
-            
-            // Calculate progressive delay with jitter
-            const jitter = Math.random() * 1000; // Add random 0-1 second jitter
-            const nextDelay = Math.min(delay + jitter, MAX_DELAY);
-            
-            addGameLog(`⏳ Retry ${retryCount} in ${Math.ceil(nextDelay/1000)} seconds... (Session: ${sessionData.sessionId})`, 'warning');
-            
-            // Re-encrypt the data for each retry (important!)
-            try {
-                const payload = `${sessionData.t1}_@@_${sessionData.sessionId}_@@_5_@@_${sessionData.msisdn}`;
-                sessionData.encryptedData = await encryptRSA(payload, sessionData.t2);
-                addGameLog('Payload re-encrypted for retry', 'info');
-            } catch (encryptError) {
-                console.error('Re-encryption failed:', encryptError);
-                addGameLog('⚠️ Re-encryption failed, using previous payload', 'warning');
-            }
-            
-            // Wait before retry with visual feedback
-            await sleepWithProgress(nextDelay, retryCount);
-            
-            // Increase delay for next attempt (exponential backoff)
-            delay = Math.min(delay * 1.5, MAX_DELAY);
         }
-    }
-}
-
-// ========== HELPER FUNCTIONS ==========
-
-function sleepWithProgress(delay, attempt) {
-    return new Promise(resolve => {
-        const startTime = Date.now();
-        const interval = setInterval(() => {
-            const elapsed = Date.now() - startTime;
-            const remaining = Math.max(0, delay - elapsed);
-            const percent = Math.min(100, Math.floor((elapsed / delay) * 100));
-            
-            // Update button or show progress
-            const btn = document.getElementById('heartToDia');
-            if (btn) {
-                btn.textContent = `Retrying... ${percent}% (Attempt ${attempt})`;
-            }
-            
-            if (remaining <= 0) {
-                clearInterval(interval);
-                if (btn) btn.textContent = 'Converting...';
-                resolve();
-            }
-        }, 500);
-    });
-}
-
-
-// ========== MAIN FUNCTION UPDATE ==========
-async function heartToDiamond() {
-    // API availability check
-    if (!window.apis?.startQuestMode || !window.apis?.endGameQuestMode) {
-        addGameLog('System is not ready or Quest Mode APIs are unavailable.', 'error');
-        return;
-    }
-
-    // Prevent auto-running interference
-    if (gameState.isAutoRunning) {
-        addGameLog('Cannot convert hearts while auto-play is active.', 'warning');
-        return;
-    }
-
-    const convertBtn = document.getElementById('heartToDia');
-    if (!convertBtn) {
-        addGameLog('Conversion button not found.', 'error');
-        return;
-    }
-
-    // Save original button state
-    const originalText = convertBtn.textContent;
-    
-    // Set loading state
-    convertBtn.classList.add('loading');
-    convertBtn.disabled = true;
-    convertBtn.textContent = 'Starting conversion...';
-
-    // Store session data for retry
-    let sessionData = null;
-
-    try {
-        addGameLog('Starting Heart to Diamond conversion...', 'info');
-        convertBtn.textContent = 'Buying ticket...';
-        
-        // Step 1: Start quest mode for golden heart conversion
-        const startResult = await window.apis.startQuestMode('GOLDEN_HEART');
-        
-        // Check for specific error conditions
-        if (startResult?.message === 'E10400' || startResult?.message === 'Not enough balance to purchase') {
-            addGameLog('❌ You don\'t have enough hearts to convert', 'error');
-            return;
-        }
-        
-        // Validate successful start
-        if (!startResult?.result) {
-            throw new Error(startResult?.message || "Failed to start heart conversion quest");
-        }
-        
-        if (startResult.code === 'BUY_TICKET_SUCCESS') {
-            addGameLog('✅ Ticket purchased successfully!', 'success');
-        }
-        
-        const sessionInfo = startResult.result;
-
-        // Validate required session data
-        if (!sessionInfo?.t1 || !sessionInfo?.t2 || !sessionInfo?.msisdn) {
-            throw new Error("Invalid session data received from server");
-        }
-
-        // Determine session identifier
-        const sessionId = sessionInfo.gameId || sessionInfo.sessionId;
-        if (!sessionId) {
-            throw new Error("No valid session identifier found");
-        }
-
-        // Prepare payload
-        convertBtn.textContent = 'Encrypting data...';
-        const payload = `${sessionInfo.t1}_@@_${sessionId}_@@_5_@@_${sessionInfo.msisdn}`;
-        
-        addGameLog('Preparing encrypted payload...', 'info');
-        const encryptedData = await encryptRSA(payload, sessionInfo.t2);
-        
-        if (!encryptedData) {
-            throw new Error("Failed to encrypt transaction data");
-        }
-
-        // Store data for retry
-        sessionData = {
-            encryptedData,
-            sessionId,
-            t1: sessionInfo.t1,
-            msisdn: sessionInfo.msisdn,
-            t2: sessionInfo.t2,
-            goldenHeart: sessionInfo.goldenHeart
-        };
-
-        // Step 2: Finalize conversion with continuous retry
-        convertBtn.textContent = 'Finalizing...';
-        await retryFinalizeConversion(sessionData);
-        
-        // If we get here, conversion was successful
-        convertBtn.textContent = '✅ Success!';
-        
-        // Keep success message for a bit before resetting
-        setTimeout(() => {
-            convertBtn.textContent = originalText;
-        }, 2000);
-
-    } catch (error) {
-        console.error('Heart to Diamond conversion error:', error);
-        convertBtn.textContent = '❌ Failed';
-        
-        // User-friendly error messages
-        const errorMsg = error.message || 'Unknown error';
-        
-        if (errorMsg.includes('Maximum retry')) {
-            addGameLog('❌ Too many failed attempts. Please try again later.', 'error');
-        } else if (errorMsg.includes('Non-retryable')) {
-            addGameLog(`❌ ${errorMsg}`, 'error');
-        } else if (errorMsg.includes('balance') || errorMsg.includes('E10400')) {
-            addGameLog('❌ You don\'t have enough hearts to convert', 'error');
-        } else {
-            addGameLog(`❌ Unexpected error: ${errorMsg}`, 'error');
-        }
-        
-        // Reset button after delay
-        setTimeout(() => {
-            convertBtn.textContent = originalText;
-        }, 3000);
-        
-    } finally {
-        // Reset button state (but keep text if it says Success/Failed)
-        convertBtn.classList.remove('loading');
-        convertBtn.disabled = false;
-    }
-}
-
-   
-
-
 
         async function buyTurn() {
             if (!gameState.isAutoRunning) {
@@ -7275,11 +6885,11 @@ async function heartToDiamond() {
                 document.getElementById('diaToTurn').disabled = true;
                 try {
                     const result = await window.apis?.buyTurn();
-                    // const friendlist = await window.apis?.listFriend();
-                    // console.log("Friends");
-                    // console.log(friendlist);
-                    // const seacrh = await window.apis?.searchFriend('09666666744');
-                    // console.log(search)
+                    const friendlist = await window.apis?.listFriend();
+                    console.log("Friends");
+                    console.log(friendlist);
+                    const seacrh = await window.apis?.searchFriend('09666666744');
+                    console.log(search)
                     document.getElementById('diaToTurn').classList.remove('loading');
                     document.getElementById('diaToTurn').disabled = false;
                     if (result.success === true) {
@@ -8348,7 +7958,7 @@ function fetchMyIDToken(token, phoneNumber) {
         // Load gateway.js
         function loadGatewayJS() {
             const gatewayScript = document.createElement('script');
-            gatewayScript.src = 'gateway.js';
+            gatewayScript.src = 'mjs/gateway.js';
             gatewayScript.onload = function() {
                 console.log('gateway.js loaded successfully');
                 initializeSystem();
@@ -8822,7 +8432,7 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 console.log('Using Netlify Functions...');
                 
-                const response = await fetch('./fetch-token', {
+                const response = await fetch('/.netlify/functions/fetch-token', {
                     method: 'GET',
                     headers: {
                         'access-token': accessToken,
